@@ -54,6 +54,12 @@ public class Main extends JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a port number.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
+        if (!textAreaResults.getText().isEmpty()) {
+            textAreaResults.append("\n--- New Check ---\n");
+        }
+        pIds.clear();
+
         String command = os.contains("windows") ?
                 "cmd /c netstat -ano | findstr \": " + port + " \"" :
                 "netstat -anp | grep :" + port;
